@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -44,9 +45,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.cardViewHolder
     }
     @Override
     public cardViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        //View v = mLayoutInflater.inflate(R.layout.card_layout, viewGroup, false);
-        //View v = mLayoutInflater.inflate(R.layout.card_deputado, viewGroup, false);
-        View v = mLayoutInflater.inflate(R.layout.card_deputadosimples, viewGroup, false);
+        View v = mLayoutInflater.inflate(R.layout.card_deputado_constraint, viewGroup, false);
         cardViewHolder mvh = new cardViewHolder(v);
         return mvh;
     }
@@ -54,9 +53,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.cardViewHolder
     @Override
     public void onBindViewHolder(cardViewHolder holder, int position) {
         Deputado d = this.deputados.get(position);
+        String[] nome = d.getNome().split("\\s");
+        System.out.println(Arrays.toString(nome));
+        String aux;
+        if(nome.length > 1)
+            if(nome[1].toUpperCase().equals("DE") ||
+                    nome[1].toUpperCase().equals("DO") ||
+                    nome[1].toUpperCase().equals("DA"))
+                aux = nome[0] + " " + nome[1] + "\n" + nome[2];
+            else aux = nome[0] + "\n" + nome[1];
+        else
+            aux = nome[0];
         Picasso.with(mContext).load(d.getUrlFoto()).into(holder.imageDeputado);
-        holder.nomeDeputado.setText(d.getNome());
-        //holder.partidoDeputado.setText(d.getSiglaPartido());
+        holder.nomeDeputado.setText(aux);
+        holder.partidoDeputado.setText(d.getSiglaPartido());
     }
 
     @Override
@@ -68,13 +78,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.cardViewHolder
     public class cardViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageDeputado;
         public TextView nomeDeputado;
-        //public TextView partidoDeputado;
+        public TextView partidoDeputado;
 
         public cardViewHolder(View itemView) {
             super(itemView);
             imageDeputado = (ImageView) itemView.findViewById(R.id.imgDeputado);
             nomeDeputado = (TextView) itemView.findViewById(R.id.nomeDeputado);
-           // partidoDeputado = (TextView) itemView.findViewById(R.id.partidoDeputado);
+            partidoDeputado = (TextView) itemView.findViewById(R.id.partidoDeputado);
         }
     }
 }
