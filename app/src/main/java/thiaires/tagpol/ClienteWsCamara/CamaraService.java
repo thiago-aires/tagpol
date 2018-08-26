@@ -7,7 +7,9 @@ package thiaires.tagpol.ClienteWsCamara;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
+import thiaires.tagpol.Modelo.Deputado;
 import thiaires.tagpol.Modelo.Deputados;
 
 /**
@@ -21,4 +23,7 @@ public interface CamaraService {
     /*
             o retrofit já retorna um List<Object> no caso do tipo Deputado
      */
+
+    @GET("deputados/{id}") //  concatena com a base url definida no inicializador retrofit
+    Call<Deputado> getDeputado(@Path("id")String id);
 }

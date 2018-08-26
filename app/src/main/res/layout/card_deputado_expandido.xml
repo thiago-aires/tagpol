@@ -1,67 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="300dp"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_margin="10dp"
+    android:animateLayoutChanges="true"
     app:cardBackgroundColor="#81dafa"
     app:cardCornerRadius="8dp"
-    app:cardElevation="10dp">
+    app:cardElevation="24dp">
 
     <!-- card 1 #b2ebf2  card 2 #4dd0e1 card 3 #006064  -->
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imgDeputado"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:padding="@dimen/cardview_default_elevation"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#9e9e9e"
-            android:gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Space
-            android:id="@+id/top_space"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/nomeDeputado"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/partidoDeputado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="Sigla Partido"
             android:textAlignment="textStart"
@@ -69,16 +41,15 @@
             android:textSize="18sp"
             android:textStyle="normal"
             android:theme="@style/Base.DialogWindowTitle.AppCompat"
-            app:layout_constraintBottom_toTopOf="@+id/nomeDeputado"
-            app:layout_constraintStart_toStartOf="@+id/imgDeputado"
-            app:layout_constraintTop_toTopOf="@+id/view2" />
+            app:layout_constraintStart_toEndOf="@+id/imgDeputado"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nomeDeputado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
             android:text="Nome Deputado"
             android:textAlignment="textStart"
@@ -86,8 +57,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:typeface="sans"
-            app:layout_constraintBottom_toBottomOf="@+id/imgDeputado"
-            app:layout_constraintStart_toEndOf="@+id/top_space" />
-
+            app:layout_constraintStart_toEndOf="@+id/imgDeputado"
+            app:layout_constraintTop_toBottomOf="@+id/partidoDeputado" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

@@ -1,66 +1,69 @@
 package thiaires.tagpol.Interface;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import thiaires.tagpol.ClienteWsCamara.InicializadorRetrofit;
-import thiaires.tagpol.Controle.CardAdapter;
-import thiaires.tagpol.Modelo.Deputado;
+import thiaires.tagpol.Controle.DeputadoAdapter;
 import thiaires.tagpol.Modelo.Deputados;
 import thiaires.tagpol.R;
 
 public class principal extends Activity {
 
     private RecyclerView recycler;
-    private CardAdapter cardAdapter;
+    private DeputadoAdapter deputadoAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    int col;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         recycler = (RecyclerView) findViewById(R.id.recycler);
+        Configuration c = getResources().getConfiguration();
+        if(c.orientation == Configuration.ORIENTATION_LANDSCAPE) col = 3;
+        else col = 2;
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        layoutManager = new GridLayoutManager(principal.this, 2, GridLayoutManager.VERTICAL, false);
+        layoutManager = new GridLayoutManager(principal.this, col, GridLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(layoutManager);
-        cardAdapter = new CardAdapter(principal.this, new ArrayList<Deputado>());
-        recycler.setAdapter(cardAdapter);
-        carregaDados(cardAdapter);
+        deputadoAdapter = new DeputadoAdapter(principal.this, new Deputados());
+        recycler.setAdapter(deputadoAdapter);
+        carregaDados(deputadoAdapter);
     }
 
-    private void carregaDados(CardAdapter cardAdapter) {
-        (new ClienteCamara(cardAdapter)).execute(1);
-        (new ClienteCamara(cardAdapter)).execute(2);
-        (new ClienteCamara(cardAdapter)).execute(3);
-        (new ClienteCamara(cardAdapter)).execute(4);
-        (new ClienteCamara(cardAdapter)).execute(5);
-        (new ClienteCamara(cardAdapter)).execute(6);
+    private void carregaDados(DeputadoAdapter a) {
+        //System.out.println("carregaDados");
+        (new ClienteCamara(a)).execute(1);
+        (new ClienteCamara(a)).execute(2);
+        (new ClienteCamara(a)).execute(3);
+        (new ClienteCamara(a)).execute(4);
+        (new ClienteCamara(a)).execute(5);
+        (new ClienteCamara(a)).execute(6);
     }
 
-    public static class ClienteCamara extends AsyncTask<Integer, ArrayList<Deputado>, ArrayList<Deputado>>{
-        private CardAdapter cardAdapter;
+    public static class ClienteCamara extends AsyncTask<Integer, Deputados, Deputados>{
+        private DeputadoAdapter deputadoAdapter;
 
 
-        public ClienteCamara(CardAdapter c){
-            this.cardAdapter = c;
+        public ClienteCamara(DeputadoAdapter c){
+            this.deputadoAdapter = c;
         }
 
-
         @Override
-        protected ArrayList<Deputado> doInBackground(Integer... integers) {
-            final ArrayList<Deputado> resposta = new ArrayList<>();
+        protected Deputados doInBackground(Integer... integers) {
+            System.out.println("doInBackground");
+            final Deputados resposta = new Deputados();
             try {
                 final Call<Deputados> call = new InicializadorRetrofit().getCamaraService().getDeputados(integers[0]); //cria uma requisição
                 call.enqueue(new Callback<Deputados>() { // enqueue significa uma requisição assincrona pois pode demorar e nao pode travar o app
@@ -73,11 +76,13 @@ public class principal extends Activity {
                     @Override
                     public void onResponse(Call<Deputados> call, Response<Deputados> rspns) {
                         try {
-                            ArrayList<Deputado> aux = rspns.body().getDados();
-                            for(Deputado d : aux){
-                                resposta.add(d);
+                            //System.out.println("onresponse");
+                            Deputados aux = rspns.body();
+                            for(Deputados.Dado d : aux.getDados()){
+                                resposta.getDados().add(d);
                                 //System.err.println(" d" + d.toString());
                             }
+                            //System.out.println("onresponse " + aux.toString());
                             publishProgress(resposta);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -91,9 +96,9 @@ public class principal extends Activity {
         }
 
         @Override
-        protected void onProgressUpdate(ArrayList<Deputado>... values) {
-            cardAdapter.setDeputados(values[0]);
-            cardAdapter.notifyDataSetChanged();
+        protected void onProgressUpdate(Deputados... values) {
+            deputadoAdapter.setDeputados(values[0]);
+            deputadoAdapter.notifyDataSetChanged();
         }
     }
 }
