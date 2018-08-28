@@ -25,5 +25,5 @@ public interface CamaraService {
      */
 
     @GET("deputados/{id}") //  concatena com a base url definida no inicializador retrofit
-    Call<Deputado> getDeputado(@Path("id")String id);
+    Call<Deputado> getDeputado(@Path("id") int id);
 }

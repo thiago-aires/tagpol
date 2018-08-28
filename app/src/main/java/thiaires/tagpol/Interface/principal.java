@@ -20,7 +20,8 @@ public class principal extends Activity {
     private RecyclerView recycler;
     private DeputadoAdapter deputadoAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    int col;
+    private int col;
+    private int pagina=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +31,31 @@ public class principal extends Activity {
         Configuration c = getResources().getConfiguration();
         if(c.orientation == Configuration.ORIENTATION_LANDSCAPE) col = 3;
         else col = 2;
+        pagina = 1;
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if(!recyclerView.canScrollVertically(1)) {
+                    //nao consegue descer mais carrega mais dados
+                    System.out.println("can scroll verticaly 1");
+                    //carregaDados(adapter);
+                }
+            }
+        });
+
         layoutManager = new GridLayoutManager(principal.this, col, GridLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(layoutManager);
         deputadoAdapter = new DeputadoAdapter(principal.this, new Deputados());
@@ -44,12 +65,17 @@ public class principal extends Activity {
 
     private void carregaDados(DeputadoAdapter a) {
         //System.out.println("carregaDados");
+        //if(pagina <= 6) {
+           // (new ClienteCamara(a)).execute(pagina);
+           // pagina++;
+        //}
         (new ClienteCamara(a)).execute(1);
         (new ClienteCamara(a)).execute(2);
         (new ClienteCamara(a)).execute(3);
         (new ClienteCamara(a)).execute(4);
         (new ClienteCamara(a)).execute(5);
         (new ClienteCamara(a)).execute(6);
+        a.organiza();
     }
 
     public static class ClienteCamara extends AsyncTask<Integer, Deputados, Deputados>{
@@ -98,7 +124,6 @@ public class principal extends Activity {
         @Override
         protected void onProgressUpdate(Deputados... values) {
             deputadoAdapter.setDeputados(values[0]);
-            deputadoAdapter.notifyDataSetChanged();
         }
     }
 }

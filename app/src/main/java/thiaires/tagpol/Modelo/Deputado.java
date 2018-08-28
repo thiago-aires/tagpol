@@ -1,7 +1,6 @@
 package thiaires.tagpol.Modelo;
 
-import android.net.Uri;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,7 +9,7 @@ import java.util.Date;
  *  Classe que mantém informações completas para o CardView expandido
  * @author thiaires
  */
-public class Deputado {
+public class Deputado implements Serializable {
     private Dados dados;
 
     public Deputado() {
@@ -42,7 +41,7 @@ public class Deputado {
         this.links = links;
     }
 
-    public class Gabinete {
+    public class Gabinete implements Serializable{
         private String nome;
 
         public String getNome() {
@@ -116,7 +115,7 @@ public class Deputado {
         }
     }
 
-    public class UltimoStatus {
+    public class UltimoStatus implements Serializable {
 
         public UltimoStatus() {
             this.gabinete = new Gabinete();
@@ -283,7 +282,7 @@ public class Deputado {
         }
     }
 
-    public class Dados {
+    public class Dados implements Serializable{
 
         public Dados() {
             this.ultimoStatus = new UltimoStatus();
@@ -350,23 +349,23 @@ public class Deputado {
             this.sexo = sexo;
         }
 
-        private Uri urlWebsite;
+        private String urlWebsite;
 
-        public Uri getUrlWebsite() {
+        public String getUrlWebsite() {
             return this.urlWebsite;
         }
 
-        public void setUrlWebsite(Uri urlWebsite) {
+        public void setUrlWebsite(String urlWebsite) {
             this.urlWebsite = urlWebsite;
         }
 
-        private ArrayList<Uri> redeSocial;
+        private ArrayList<String> redeSocial;
 
-        public ArrayList<Uri> getRedeSocial() {
+        public ArrayList<String> getRedeSocial() {
             return this.redeSocial;
         }
 
-        public void setRedeSocial(ArrayList<Uri> redeSocial) {
+        public void setRedeSocial(ArrayList<String> redeSocial) {
             this.redeSocial = redeSocial;
         }
 
@@ -440,7 +439,7 @@ public class Deputado {
         }
     }
 
-    public class Link {
+    public class Link implements Serializable{
         private String rel;
 
         public String getRel() {
