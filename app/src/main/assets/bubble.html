@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<div class="chart-example" id="chart"><svg></svg></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+<script src="bubble_chart.js"></script>
+<script>
+    var data = JSON.parse('[{"nome":"ASSINATURA DE PUBLICAÇÕES","valor":"R$ 129,9","tamanho":129.9},{"nome":"COMBUSTÍVEIS E LUBRIFICANTES.","valor":"R$ 1.011,35","tamanho":1011.35},{"nome":"Emissão Bilhete Aéreo","valor":"R$ 10.517,26","tamanho":10517.26},{"nome":"FORNECIMENTO DE ALIMENTAÇÃO DO PARLAMENTAR","valor":"R$ 23,24","tamanho":23.24},{"nome":"LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES","valor":"R$ 7.600,0","tamanho":7600},{"nome":"PASSAGENS AÉREAS","valor":"R$ 1.580,17","tamanho":1580.17},{"nome":"SERVIÇO DE TÁXI, PEDÁGIO E ESTACIONAMENTO","valor":"R$ 84,0","tamanho":84},{"nome":"SERVIÇOS POSTAIS","valor":"R$ 1.175,23","tamanho":1175.23},{"nome":"TELEFONIA","valor":"R$ 2.342,25","tamanho":2342.25}]');
+    var chart = bubbleChart();
+    d3.select('#chart').datum(data).call(chart);
+
+</script>
+

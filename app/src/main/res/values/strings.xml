@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TagPol</string>
     <string name="apresentacao">TAGPOL APP\n Desenvolvido por Thiago Aires\n Carregando dados dos Deputados</string>
+    <string name="title_deputados">Deputados</string>
+    <string name="title_graficos">Gráficos</string>
+    <string name="title_sobre">Sobre</string>
 </resources>

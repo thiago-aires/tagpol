@@ -1,4 +1,4 @@
-package thiaires.tagpol.Controle;
+package thiaires.tagpol.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,10 +22,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import thiaires.tagpol.ClienteWsCamara.InicializadorRetrofit;
-import thiaires.tagpol.Interface.DetalhesDeputado;
 import thiaires.tagpol.Modelo.Deputado;
 import thiaires.tagpol.Modelo.Deputados;
 import thiaires.tagpol.R;
+import thiaires.tagpol.View.DetalhesDeputado;
 
 
 public class DeputadoAdapter extends RecyclerView.Adapter<DeputadoAdapter.cardViewHolder> {
