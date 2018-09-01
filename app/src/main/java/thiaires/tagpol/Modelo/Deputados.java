@@ -5,13 +5,14 @@ package thiaires.tagpol.Modelo;
  * and open the template in the editor.
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *  Classe que mantém apenas informações para o CardView simples
  * @author thiaires
  */
-public class Deputados{
+public class Deputados implements Serializable{
     public Deputados() {
         this.dados = new ArrayList<>();
         this.links = new ArrayList<>();
@@ -36,7 +37,7 @@ public class Deputados{
                 '}';
     }
 
-    public class Dado
+    public class Dado implements Serializable
     {
         private int id;
 
@@ -101,7 +102,7 @@ public class Deputados{
         }
     }
 
-    public class Link
+    public class Link implements Serializable
     {
         private String rel;
 

@@ -7,9 +7,10 @@
     android:layout_margin="10dp"
     app:cardBackgroundColor="@color/cardview_shadow_start_color"
     app:cardCornerRadius="8dp"
-    app:cardElevation="10dp"
+    app:cardElevation="8dp"
     android:id="@+id/cardView"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    app:layout_constraintDimensionRatio="2:3">
 
     <!-- card 1 #b2ebf2  card 2 #4dd0e1 card 3 #006064  -->
 
@@ -22,13 +23,12 @@
             android:id="@+id/imgDeputado"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
-            android:padding="@dimen/cardview_default_elevation"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="Sigla Partido"
             android:textAlignment="textStart"
@@ -87,6 +87,6 @@
             android:textStyle="bold"
             android:typeface="sans"
             app:layout_constraintBottom_toBottomOf="@+id/imgDeputado"
-            app:layout_constraintStart_toEndOf="@+id/top_space" />
+            app:layout_constraintStart_toStartOf="@+id/imgDeputado" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

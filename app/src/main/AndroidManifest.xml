@@ -12,12 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".View.DetalhesDeputado"
-            android:theme="@style/Theme.AppCompat" />
-        <activity
-            android:name=".View.visualisacoes"
-            android:theme="@style/Theme.AppCompat" />
-        <activity
             android:name=".View.homeScreen"
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
@@ -26,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.DetalhesDeputado"
+            android:theme="@style/Theme.AppCompat"></activity>
     </application>
 
 </manifest>

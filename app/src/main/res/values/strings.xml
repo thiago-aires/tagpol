@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">TagPol</string>
-    <string name="apresentacao">TAGPOL APP\n Desenvolvido por Thiago Aires\n Carregando dados dos Deputados</string>
+    <string name="apresentacao">Trabalho de Conclusão de Curso \n\n
+                                Aplicativo de Acesso e visualização de dados \n\n
+                                Desenvolvido por Thiago Aires \n\n
+                                almeida.thiago@live.com \n\n
+                                Orientação Profº Danilo Medeiros Eler</string>
     <string name="title_deputados">Deputados</string>
     <string name="title_graficos">Gráficos</string>
     <string name="title_sobre">Sobre</string>
