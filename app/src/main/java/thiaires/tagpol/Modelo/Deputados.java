@@ -55,7 +55,9 @@ public class Deputados implements Serializable{
 
         public String getNome() { return this.nome; }
 
-        public void setNome(String nome) { this.nome = nome; }
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
 
         private String siglaPartido;
 

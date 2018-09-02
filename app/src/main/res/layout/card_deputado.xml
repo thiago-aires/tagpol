@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="300dp"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:layout_margin="10dp"
     app:cardBackgroundColor="@color/cardview_shadow_start_color"
     app:cardCornerRadius="8dp"
@@ -19,23 +20,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgDeputado"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgDeputadoFresco"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            fresco:fadeDuration="300"
+            fresco:actualImageScaleType="2:3"
+            fresco:placeholderImage="@color/wait_color"
+            fresco:placeholderImageScaleType="2:3"
+            fresco:failureImage="@drawable/error"
+            fresco:failureImageScaleType="2:3"
+            fresco:retryImage="@drawable/retrying"
+            fresco:retryImageScaleType="2:3"
+            fresco:progressBarImage="@drawable/progress_bar"
+            fresco:progressBarImageScaleType="centerInside"
+            fresco:progressBarAutoRotateInterval="1000"
+            fresco:backgroundImage="@color/blue"
+            fresco:overlayImage="@drawable/watermark"
+            fresco:pressedStateOverlayImage="@color/red"
+            fresco:roundAsCircle="false"
+            fresco:roundedCornerRadius="5dp"
+            fresco:roundTopLeft="true"
+            fresco:roundTopRight="false"
+            fresco:roundBottomLeft="false"
+            fresco:roundBottomRight="true"
+            fresco:roundWithOverlayColor="@color/corner_color"
+            fresco:roundingBorderWidth="2dp"
+            fresco:roundingBorderColor="@color/border_color" />
 
         <View
             android:id="@+id/view2"
@@ -48,45 +59,39 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Space
-            android:id="@+id/top_space"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/nomeDeputado"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/partidoDeputado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/rubik_light"
             android:text="Sigla Partido"
             android:textAlignment="textStart"
+            android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="18sp"
-            android:textStyle="normal"
+            android:textSize="14sp"
+            android:textStyle="normal|bold"
             android:theme="@style/Base.DialogWindowTitle.AppCompat"
-            app:layout_constraintBottom_toTopOf="@+id/nomeDeputado"
-            app:layout_constraintStart_toStartOf="@+id/imgDeputado"
-            app:layout_constraintTop_toTopOf="@+id/view2" />
+            android:typeface="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nomeDeputado" />
 
         <TextView
             android:id="@+id/nomeDeputado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
-            android:fontFamily="sans-serif"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/rubik_light"
             android:text="Nome Deputado"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:typeface="sans"
-            app:layout_constraintBottom_toBottomOf="@+id/imgDeputado"
-            app:layout_constraintStart_toStartOf="@+id/imgDeputado" />
+            android:typeface="normal"
+            app:layout_constraintStart_toStartOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="@+id/view2" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
