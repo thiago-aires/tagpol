@@ -2,7 +2,6 @@ package thiaires.tagpol.Modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 /**
@@ -369,23 +368,23 @@ public class Deputado implements Serializable {
             this.redeSocial = redeSocial;
         }
 
-        private Date dataNascimento;
+        private String dataNascimento;
 
-        public Date getDataNascimento() {
+        public String getDataNascimento() {
             return this.dataNascimento;
         }
 
-        public void setDataNascimento(Date dataNascimento) {
+        public void setDataNascimento(String dataNascimento) {
             this.dataNascimento = dataNascimento;
         }
 
-        private Date dataFalecimento;
+        private String dataFalecimento;
 
-        public Date getDataFalecimento() {
+        public String getDataFalecimento() {
             return this.dataFalecimento;
         }
 
-        public void setDataFalecimento(Date dataFalecimento) {
+        public void setDataFalecimento(String dataFalecimento) {
             this.dataFalecimento = dataFalecimento;
         }
 

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://cdn.anychart.com/releases/8.3.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.3.0/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.3.0/js/anychart-exports.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.3.0/css/anychart-ui.min.css" />
+    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.3.0/fonts/css/anychart-font.min.css" />
+    <style>
+    html, body, #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript">
+anychart.onDocumentReady(function() {
+  // create pie chart with passed data
+  var chart = anychart.pie([
+    ['Assinatura de publicações', 129.9],
+              ['Combustíveis e Lubrificantes', 1011.35],
+              ['Emissão Bilhete Aéreo', 10517.26],
+            ['Fornecimento de Alimentação do Parlamentar', 23.24],
+            ['Locação ou Fretamento de Veículos Automotores', 7600],
+            ['Passagens Aéreas', 1580.17],
+            ['Serviço de Táxi, Pedágio e Estacionamento', 84],
+            ['Serviços Postais', 1175.23],
+            ['Telefonia', 2342.25]
+  ]);
+
+  // create range color palette with color ranged between light blue and dark blue
+  var palette = anychart.palettes.rangeColors();
+  palette.items([{
+      color: '#64b5f6'
+    },
+    {
+      color: '#455a64'
+    }
+  ]);
+
+  // set chart title text settings
+  chart.title('Gastos Mensais do deputado bolsotario')
+    //set chart radius
+    .innerRadius('60%')
+    // set palette to the chart
+    .palette(palette);
+
+  // set container id for the chart
+  chart.container('container');
+  // initiate chart drawing
+  chart.draw();
+});
+    </script>
+</body>
+</html>

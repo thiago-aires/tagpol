@@ -22,6 +22,10 @@ public class Deputados implements Serializable{
 
     public ArrayList<Dado> getDados() { return this.dados; }
 
+    public void addDado(Dado d){
+        this.dados.add(d);
+    }
+
     public void setDados(ArrayList<Dado> dados) { this.dados = dados; }
 
     private ArrayList<Link> links;
@@ -37,8 +41,7 @@ public class Deputados implements Serializable{
                 '}';
     }
 
-    public class Dado implements Serializable
-    {
+    public class Dado implements Serializable {
         private int id;
 
         public int getId() { return this.id; }
@@ -117,5 +120,13 @@ public class Deputados implements Serializable{
         public String getHref() { return this.href; }
 
         public void setHref(String href) { this.href = href; }
+
+        @Override
+        public String toString() {
+            return "Link{" +
+                    "rel='" + rel + '\'' +
+                    ", href='" + href + '\'' +
+                    '}';
+        }
     }
 }
